@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Functions</title>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .child-status {
+            display: none; /* Hide child status by default */
+        }
+        /* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+/* Container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Header styles */
+h1 {
+    margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+/* Map container styles */
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    </style>
+</head>
+<body>
+    <h1>User Functions</h1>
+
+    <div>
+        <h2>Update User Status</h2>
+        <form id="updateStatusForm">
+            <label for="userId">User ID:</label>
+            <input type="text" id="userId" name="userId" required>
+            <label for="status">Status:</label>
+            <select id="status" name="status">
+                <option value="Safe">Safe</option>
+                <option value="Injured">Injured</option>
+                <option value="Deceased">Deceased</option>
+                <option value="Stuck">Stuck</option>
+                <option value="Missing">Missing</option>
+            </select>
+            <button type="submit">Update Status</button>
+        </form>
+    </div>
+
+    <div id="childStatusContainer" class="child-status">
+        <h2>Child Status</h2>
+        <!-- Display child status here -->
+        <!-- Example: <p>Child Status: Safe</p> -->
+    </div>
+
+    <div>
+        <h2>View My Details</h2>
+        <!-- Add functionality to view user details here -->
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 0, lng: 0},
+                zoom: 2
+            });
+
+            // Add marker for demonstration
+            var marker = new google.maps.Marker({
+                position: {lat: 0, lng: 0},
+                map: map
+            });
+        }
+
+        // Show child status if the user is a guardian
+        var userIdInput = document.getElementById('userId');
+        var childStatusContainer = document.getElementById('childStatusContainer');
+
+        userIdInput.addEventListener('input', function() {
+            var userId = userIdInput.value;
+            // Example: Send AJAX request to check if the user is a guardian
+            // If the user is a guardian, show the child status container
+            // If not, hide the child status container
+            // You can implement this functionality using your server-side logic
+        });
+
+        // Update user status
+        var updateStatusForm = document.getElementById('updateStatusForm');
+        updateStatusForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            var formData = new FormData(updateStatusForm);
+            // Example: Send AJAX request to update user status
+            // You can implement this functionality using your server-side logic
+        });
+    </script>
+    <!-- Load the Google Maps API with your API key -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBPjmRl28LknzlGbCx0zJqhQVvynvPU0qU&callback=initMap"></script>
+</body>
+</html>
